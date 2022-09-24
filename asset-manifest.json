@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "./static/css/main.897381b7.css",
+    "main.js": "./static/js/main.6ab73a2f.js",
+    "static/media/Roboto-Medium.ttf": "./static/media/Roboto-Medium.7429a63c09f79a1760b0.ttf",
+    "static/media/Roboto-Regular.ttf": "./static/media/Roboto-Regular.a8d6ac03c7b96b7acb62.ttf",
+    "static/media/Roboto-Bold.ttf": "./static/media/Roboto-Bold.75371f53f06181df75f1.ttf",
+    "static/media/Roboto-Light.ttf": "./static/media/Roboto-Light.8be2d1487420548b3b8d.ttf",
+    "static/media/Roboto-Regular.woff2": "./static/media/Roboto-Regular.620f37a0555ef6198265.woff2",
+    "static/media/Roboto-Bold.woff2": "./static/media/Roboto-Bold.4f8b0b0709eecd6064c4.woff2",
+    "static/media/Roboto-Medium.woff2": "./static/media/Roboto-Medium.27ed3ab6a047960b0838.woff2",
+    "static/media/Roboto-Light.woff2": "./static/media/Roboto-Light.ab0022d188d01d6dd828.woff2",
+    "static/media/Roboto-Medium.woff": "./static/media/Roboto-Medium.f859c5a22f95992860eb.woff",
+    "static/media/Roboto-Bold.woff": "./static/media/Roboto-Bold.bd043ecb53be565278f4.woff",
+    "static/media/Roboto-Regular.woff": "./static/media/Roboto-Regular.457c92bb62734e3030ed.woff",
+    "static/media/Roboto-Light.woff": "./static/media/Roboto-Light.d2d978b9394983c3338c.woff",
+    "index.html": "./index.html"
+  },
+  "entrypoints": [
+    "static/css/main.897381b7.css",
+    "static/js/main.6ab73a2f.js"
+  ]
+}
