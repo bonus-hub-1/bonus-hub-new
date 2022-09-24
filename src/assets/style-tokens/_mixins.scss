@@ -1,0 +1,108 @@
+@import "./color-palette";
+
+@mixin flex($direction, $justify, $align) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin with-count($n) {
+  @if $n == 1 {
+    &:first-child:nth-last-child(1) {
+      @content;
+    }
+  } @else {
+    &:first-child:nth-last-child(#{$n}),
+    &:first-child:nth-last-child(#{$n}) ~ & {
+      @content;
+    }
+  }
+}
+
+@mixin scrollbarMini($selector) {
+  #{$selector}::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  #{$selector}::-webkit-scrollbar-thumb {
+    border: 4px solid $grayGMS;
+    box-shadow: none;
+    border-radius: 10px;
+    min-height: 50px;
+  }
+
+  #{$selector}::-webkit-scrollbar-track {
+    background: $gray;
+    border-radius: 10px;
+    margin-right: 10px;
+  }
+
+  #{$selector}::-webkit-scrollbar-track-piece:end {
+    margin-bottom: 12px;
+    margin-right: 10px;
+  }
+  #{$selector}::-webkit-scrollbar-track-piece:start {
+    margin-top: 0;
+    margin-right: 10px;
+  }
+}
+
+@mixin customScrollbarMini() {
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border: 4px solid $blackline;
+    box-shadow: none;
+    border-radius: 10px;
+    min-height: 50px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: $gray;
+    border-radius: 10px;
+    margin-right: 10px;
+  }
+
+  ::-webkit-scrollbar-track-piece:end {
+    margin-bottom: 12px;
+    margin-right: 10px;
+  }
+  ::-webkit-scrollbar-track-piece:start {
+    margin-top: 0;
+    margin-right: 10px;
+  }
+}
+
+@mixin show-animation() {
+  animation: show 0.3s ease-in;
+
+  @keyframes show {
+    0% {
+      opacity: 0;
+    }
+    25% {
+      opacity: 0.25;
+    }
+    50% {
+      opacity: 0.5;
+    }
+    75% {
+      opacity: 0.75;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,28 @@
+@import "../../../assets/style-tokens/color-palette";
+@import "../../../assets/style-tokens/mixins";
+
+.sharing-modal {
+  .ant-modal {
+    &-content {
+      .ant-modal-body {
+        .modal-title {
+          font-size: 20px;
+          font-weight: 500;
+          margin-bottom: 15px;
+        }
+
+        .sharing-item {
+          @include flex(row, flex-start, center);
+          width: 100%;
+          padding: 10px;
+          border-radius: 5px;
+          cursor: pointer;
+
+          &:hover {
+            background-color: rgba(100, 100, 100, 0.276);
+          }
+        }
+      }
+    }
+  }
+}
