@@ -10,14 +10,12 @@ const MainContent: React.FC = observer(() => {
 
   const utcOffset = moment(UserStore.timer).utcOffset() / 60;
 
-  console.log("UserStore.timer", UserStore.timer);
-
   return (
     <>
       <div className="dashboard__info">
         <div className="flex items-center">
           <span>Кол-во кликов: </span>{" "}
-          {UserStore.hasTries || <SpinnerIcon size={18} />}
+          {Boolean(UserStore.hasTries) ? UserStore.hasTries : 0}
         </div>
         <div>Рефералы: {UserStore.refersCount}</div>
       </div>

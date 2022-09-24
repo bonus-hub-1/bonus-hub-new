@@ -16,6 +16,17 @@ export class UserStore {
     this.refersCount = data.referrals_count;
   };
 
+  updateUserTimer = (data: UserInfoType) => {
+    this.hasTries = data.has_tries;
+    this.timer = data.timer;
+    this.recents = data.recents;
+  };
+
+  updateReferralInfo = (data: UserInfoType) => {
+    this.hasTries = data.has_tries;
+    this.refersCount = data.referrals_count;
+  };
+
   setUserToken = (token: string) => {
     this.token = token;
   };
@@ -36,6 +47,7 @@ export class UserStore {
       resetStore: action,
       setUserInfo: action,
       setUserToken: action,
+      updateUserTimer: action,
     });
   }
 }

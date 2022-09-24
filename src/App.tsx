@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useEffect} from "react";
 
 import "./ws/connection.ts";
 
@@ -9,7 +9,7 @@ import "@vkontakte/vkui/dist/vkui.css";
 
 import {RootModal} from "./components/Modals/RootModal";
 import {Router, Redirect} from "@reach/router";
-import {routeUrl} from "./utils/constants";
+import {routeUrl, USER_ID} from "./utils/constants";
 import {Dashboard} from "./pages/Dashboard";
 import {observer} from "mobx-react-lite";
 import {useStores} from "./hooks/useStores";

@@ -14,8 +14,11 @@ const wsReadyState: {[key: number]: string} = {
 // URL for WebSocket
 // =================
 
-const wsDevURL = `wss://bonushub.myatnenko.ru/ws/v1/connect/${vkValidationParamsString}`;
-const wsProductionURL = `wss://bonushub.myatnenko.ru/ws/v1/connect/${vkValidationParamsString}`;
+const refHash = document.location.hash.replace("#","");
+
+const wsDevURL = `wss://bonushub.myatnenko.ru/ws/v1/connect/${vkValidationParamsString}&referral_id=${refHash}`;
+const wsProductionURL = `wss://bonushub.myatnenko.ru/ws/v1/connect/${vkValidationParamsString}&referral_id=${refHash}`;
+console.log("wsDevURL", wsDevURL);
 
 const wsURL =
   process.env.NODE_ENV === "development" ? wsDevURL : wsProductionURL;
