@@ -12,7 +12,7 @@ export const dispatchMessage = (res: any) => {
     case "button_press":
       UserStore.updateUserTimer(payload);
       break;
-    case "ref_joined":
+    case "referral_joined":
       UserStore.updateReferralInfo(payload);
       break;
 
