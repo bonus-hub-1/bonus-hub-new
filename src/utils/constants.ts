@@ -1,8 +1,8 @@
 export const APP_ID = 51400811;
 export const GROUP_ID = 0;
-export const NAME_PROJECT = "bonus-hub";
+export const NAME_PROJECT = "bonus-hub-new";
 export const routeUrl =
-  process.env.NODE_ENV === "production" ? "/bonus-hub" : "";
+  process.env.NODE_ENV === "production" ? "/bonus-hub-new" : "";
 
 const vkValidationParams = new URLSearchParams(document.location.search);
 
