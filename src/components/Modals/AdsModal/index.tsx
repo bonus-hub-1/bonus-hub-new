@@ -1,11 +1,13 @@
-import {useEffect, useRef, SetStateAction, Dispatch} from "react";
+import {useEffect, useRef, SetStateAction, Dispatch, useState} from "react";
 import {Form, Input, Button, Modal} from "antd";
 import {useStores} from "../../../hooks/useStores";
 import {observer} from "mobx-react-lite";
 import {CloseOutlined} from "@ant-design/icons";
 import "./AdsModal.scss";
-import {nativeAds} from "../../../utils/bridge-method";
+import {addGroup, nativeAds} from "../../../utils/bridge-method";
 import {Push} from "../../common/Push";
+import {wsAds} from "../../../ws/messageSender";
+import {GROUP_ID} from "../../../utils/constants";
 
 type TransferModalType = {
   visible: boolean;
@@ -13,8 +15,8 @@ type TransferModalType = {
 };
 
 const AdsModal = observer(({visible, setVisible}: TransferModalType) => {
+  const {UserStore, ModalStore, SnackbarStore} = useStores();
   const form = useRef<any>();
-  const {ModalStore} = useStores();
 
   useEffect(() => {
     form.current?.resetFields();
@@ -38,6 +40,15 @@ const AdsModal = observer(({visible, setVisible}: TransferModalType) => {
     ModalStore.setActiveModal("sharing");
   };
 
+  const openAds = async () => {
+    await wsAds();
+    ModalStore.resetStore();
+  };
+
+  const subGroup = async () => {
+    await addGroup(GROUP_ID);
+  };
+
   return (
     <Modal
       className="ads-modal"
@@ -58,8 +69,7 @@ const AdsModal = observer(({visible, setVisible}: TransferModalType) => {
         <div className="modal-description">
           <b>Способ № 1</b>
           <p>
-            1. Каждый день дается 10 дополнительных кликов за каждые 10
-            просмотров рекламы.
+            1. За каждые 3 просмотров рекламы, дается 1 дополнительная попытка.
           </p>
           <p>2. Чтобы посмотреть рекламу, нажмите кнопку "Смотреть".</p>
 
@@ -75,7 +85,7 @@ const AdsModal = observer(({visible, setVisible}: TransferModalType) => {
           </p>
         </div>
         <div className="flex flex-row">
-          <Button className="btn primary stretched" onClick={nativeAds}>
+          <Button className="btn primary stretched" onClick={openAds}>
             Смотреть
           </Button>
           <Push size={16} orientation="horizontal" />
@@ -83,6 +93,16 @@ const AdsModal = observer(({visible, setVisible}: TransferModalType) => {
             Поделиться
           </Button>
         </div>
+        {!UserStore.subscribed && (
+          <>
+            <Push size={16} orientation="vertical" />
+            <div className="flex flex-row">
+              <Button className="btn primary stretched" onClick={subGroup}>
+                Подписаться на группу (+1 попытка)
+              </Button>
+            </div>
+          </>
+        )}
       </Form>
     </Modal>
   );

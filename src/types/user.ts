@@ -10,4 +10,7 @@ export type UserInfoType = {
   timer: string;
   recents: RecentsType[];
   referrals_count: number;
+  ads: boolean;
+  wait: number;
+  subscribed: boolean;
 };

@@ -4,11 +4,14 @@ import {Timer} from "../../../components/common/Timer";
 import {useStores} from "../../../hooks/useStores";
 import {SpinnerIcon} from "../../../Icons";
 import {observer} from "mobx-react-lite";
+import {useUpToScroll} from "../../../utils/hooks";
 
 const MainContent: React.FC = observer(() => {
   const {UserStore} = useStores();
 
   const utcOffset = moment(UserStore.timer).utcOffset() / 60;
+
+  useUpToScroll();
 
   return (
     <>

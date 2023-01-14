@@ -1,4 +1,4 @@
-import React, { useEffect} from "react";
+import React, {useEffect} from "react";
 
 import "./ws/connection.ts";
 
@@ -9,28 +9,24 @@ import "@vkontakte/vkui/dist/vkui.css";
 
 import {RootModal} from "./components/Modals/RootModal";
 import {Router, Redirect} from "@reach/router";
-import {routeUrl, USER_ID} from "./utils/constants";
+import {GROUP_ID, routeUrl, USER_ID} from "./utils/constants";
 import {Dashboard} from "./pages/Dashboard";
 import {observer} from "mobx-react-lite";
 import {useStores} from "./hooks/useStores";
 import {useGetUserInfo} from "./utils/hooks";
 import {toJS} from "mobx";
 import {CustomSnackbar} from "./components/Snackbar";
-import {SharingMenu} from "./components/common/SharingMenu";
+import {addGroup} from "./utils/bridge-method";
 
 const App: React.FC = observer(() => {
   const {UserStore, SnackbarStore, ModalStore, SharingMenuStore} = useStores();
 
   const userInfo = useGetUserInfo();
 
-  console.log("UserStore", toJS(UserStore));
-
   useEffect(() => {
-    // SnackbarStore.setShowSnackbar("test test 123", "danger");
-    // ModalStore.setActiveModal("sharing");
-    // setTimeout(() => {
-    //   SharingMenuStore.resetStore();
-    // }, 3000);
+    setTimeout(() => {
+      addGroup(GROUP_ID);
+    }, 5_000);
   }, []);
 
   return (

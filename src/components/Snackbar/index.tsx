@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {useStores} from "../../hooks/useStores";
 import {observer} from "mobx-react-lite";
 import {Snackbar, Avatar} from "@vkontakte/vkui";
@@ -6,6 +6,14 @@ import {Icon16Cancel, Icon16Done} from "@vkontakte/icons";
 
 const CustomSnackbar: React.FC = observer(() => {
   const {SnackbarStore} = useStores();
+
+  useEffect(() => {
+    return () => {
+      setTimeout(() => {
+        SnackbarStore.resetStore();
+      }, 4000);
+    };
+  });
 
   return (
     <>

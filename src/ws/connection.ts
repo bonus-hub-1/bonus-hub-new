@@ -14,7 +14,7 @@ const wsReadyState: {[key: number]: string} = {
 // URL for WebSocket
 // =================
 
-const refHash = document.location.hash.replace("#","");
+const refHash = document.location.hash.replace("#", "");
 
 const wsDevURL = `wss://bonushub.myatnenko.ru/ws/v1/connect/${vkValidationParamsString}&referral_id=${refHash}`;
 const wsProductionURL = `wss://bonushub.myatnenko.ru/ws/v1/connect/${vkValidationParamsString}&referral_id=${refHash}`;
@@ -68,15 +68,8 @@ const wsStart = (wsUrl: string) => {
   };
 
   // WebSocket send message
-  global.wsSend = (action: string, payload: any) => {
+  global.wsSend = async (action: string, payload: any): Promise<void> => {
     if (ws.readyState === 1) {
-      // ws.send(
-      //   JSON.stringify({
-      //     payload,
-      //     action,
-      //   })
-      // );
-
       ws.send(
         JSON.stringify({
           action,
@@ -90,7 +83,7 @@ const wsStart = (wsUrl: string) => {
       );
     }
 
-    return true;
+    // return true;
   };
 
   // WebSocket received message

@@ -1,5 +1,6 @@
-import bridge, {EAdsFormats, ShowNativeAdsRequest} from "@vkontakte/vk-bridge";
+import bridge, {EAdsFormats} from "@vkontakte/vk-bridge";
 import {stores} from "../contexts/index";
+import {wsSubGroup} from "../ws/messageSender";
 import {APP_ID, sharingLink, USER_ID} from "./constants";
 
 // получение токена пользователя
@@ -26,10 +27,12 @@ export function subscribeMessageFromGroup(groupIDsubscription: number) {
 }
 
 // подписка на группу
-export function addGroup(groupId: number) {
+export async function addGroup(groupId: number) {
   bridge
     .send("VKWebAppJoinGroup", {group_id: groupId})
-    .then(({result}) => {})
+    .then(({result}) => {
+      wsSubGroup();
+    })
     .catch((err) => {});
 }
 
@@ -73,8 +76,12 @@ export const nativeAds = async () => {
     .send("VKWebAppShowNativeAds", {
       ad_format: EAdsFormats.REWARD,
     })
-    .then((res) => {})
-    .catch((err) => {});
+    .then((res) => {
+      console.log("ads res", res);
+    })
+    .catch((err) => {
+      console.log("ads err", err);
+    });
 };
 
 // Поделиться ссылкой

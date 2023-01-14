@@ -4,7 +4,6 @@ import {useStores} from "../../../hooks/useStores";
 import {observer} from "mobx-react-lite";
 import {CloseOutlined} from "@ant-design/icons";
 import "./SharingModal.scss";
-import {SharingMenu} from "../../common/SharingMenu";
 import {
   copyLink,
   share,
@@ -25,6 +24,11 @@ const SharingModal = observer(({visible, setVisible}: SharingModalType) => {
     ModalStore.resetStore();
   };
 
+  const onActionHandler = (fn: () => void): void => {
+    fn();
+    ModalStore.resetStore();
+  };
+
   return (
     <Modal
       className="sharing-modal"
@@ -38,16 +42,24 @@ const SharingModal = observer(({visible, setVisible}: SharingModalType) => {
       <div className="modal-title"></div>
       <div className="modal-description">
         <div className="flex items-center flex-column">
-          <div className="sharing-item" onClick={shareLink}>
+          <div
+            className="sharing-item"
+            onClick={() => onActionHandler(shareLink)}>
             Поделиться ссылкой
           </div>
-          <div className="sharing-item" onClick={copyLink}>
+          <div
+            className="sharing-item"
+            onClick={() => onActionHandler(copyLink)}>
             Скопировать ссылку
           </div>
-          <div className="sharing-item" onClick={sharingStory}>
+          <div
+            className="sharing-item"
+            onClick={() => onActionHandler(sharingStory)}>
             Поделиться в истории
           </div>
-          <div className="sharing-item" onClick={(e) => share(e)}>
+          <div
+            className="sharing-item"
+            onClick={(e) => onActionHandler(() => share(e))}>
             Поделиться на стене
           </div>
         </div>

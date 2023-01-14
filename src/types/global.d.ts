@@ -1,5 +1,5 @@
 declare global {
-  function wsSend(action: string, payload: any): boolean;
+  async function wsSend(action: string, payload: any): Promise<void>;
 }
 
 export {};
